@@ -1,0 +1,439 @@
+<html>
+  <head>
+    <title>Projects - Akshay Bucha</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --khaki: #f2ead8;
+        --khaki2: #e8dfc8;
+        --olive: #5a6e35;
+        --dark: #2c2c1e;
+        --grey: #7a7464;
+        --line: #d4cbb8;
+        --white: #fffdf6;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--khaki);
+        color: var(--dark);
+        font-weight: 300;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 99;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 6%;
+        background: rgba(242, 234, 216, 0.95);
+        border-bottom: 1px solid var(--line);
+      }
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+      }
+      .logo span {
+        color: var(--olive);
+        font-style: italic;
+      }
+      .Nav-Links {
+        list-style: none;
+        display: flex;
+        gap: 32px;
+      }
+      .Nav-Links a {
+        font-size: 0.78rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--grey);
+      }
+      .Nav-Links a:hover,
+      .Nav-Links a.active {
+        color: var(--olive);
+      }
+      .menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1.4rem;
+        color: var(--dark);
+      }
+      .page-title {
+        padding: 120px 6% 48px;
+        border-bottom: 1px solid var(--line);
+      }
+      .page-title p {
+        font-size: 0.72rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--olive);
+        margin-bottom: 10px;
+      }
+      .page-title h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 3.2rem;
+        font-weight: 700;
+      }
+      .page-title h1 em {
+        color: var(--olive);
+        font-style: italic;
+      }
+      .content {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 60px 6%;
+      }
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 40px;
+      }
+      .filter-btn {
+        padding: 8px 18px;
+        font-family: "Inter", sans-serif;
+        font-size: 0.75rem;
+        font-weight: 400;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        background: transparent;
+        border: 1px solid var(--line);
+        color: var(--grey);
+        cursor: pointer;
+        transition: 0.2s;
+      }
+      .filter-btn.active,
+      .filter-btn:hover {
+        background: var(--olive);
+        border-color: var(--olive);
+        color: var(--white);
+      }
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+      .project-card {
+        background: var(--white);
+        padding: 32px 28px;
+        display: flex;
+        flex-direction: column;
+        transition: background 0.2s;
+      }
+      .project-card:hover {
+        background: var(--khaki2);
+      }
+      .project-card.hidden {
+        display: none;
+      }
+      .card-bar {
+        height: 3px;
+        margin-bottom: 20px;
+      }
+      .bar-olive {
+        background: var(--olive);
+      }
+      .bar-gold {
+        background: #8a7a3a;
+      }
+      .bar-teal {
+        background: #3a6a5a;
+      }
+      .bar-brown {
+        background: #7a4a2a;
+      }
+      .card-cat {
+        font-size: 0.68rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--olive);
+        margin-bottom: 8px;
+      }
+      .project-card h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+      }
+      .project-card p {
+        font-size: 0.87rem;
+        color: var(--grey);
+        line-height: 1.7;
+        margin-bottom: 16px;
+        flex: 1;
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 20px;
+      }
+      .tag {
+        font-size: 0.7rem;
+        padding: 3px 10px;
+        border: 1px solid var(--line);
+        color: var(--grey);
+      }
+      .card-btns {
+        display: flex;
+        gap: 8px;
+      }
+      .btn {
+        padding: 8px 16px;
+        font-family: "Inter", sans-serif;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border: 1px solid var(--line);
+        cursor: pointer;
+        transition: 0.2s;
+        display: inline-block;
+      }
+      .btn-fill {
+        background: var(--olive);
+        color: var(--white);
+        border-color: var(--olive);
+      }
+      .btn-fill:hover {
+        background: #6e8840;
+      }
+      .btn-ghost {
+        background: transparent;
+        color: var(--dark);
+      }
+      .btn-ghost:hover {
+        border-color: var(--olive);
+        color: var(--olive);
+      }
+      footer {
+        padding: 28px 6%;
+        border-top: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      footer p {
+        font-size: 0.8rem;
+        color: var(--grey);
+      }
+      footer p b {
+        color: var(--olive);
+        font-weight: 500;
+      }
+      .footer-links {
+        display: flex;
+        gap: 24px;
+      }
+      .footer-links a {
+        font-size: 0.78rem;
+        color: var(--grey);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+      .footer-links a:hover {
+        color: var(--olive);
+      }
+      @media (max-width: 700px) {
+        .menu-btn {
+          display: block;
+        }
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          flex-direction: column;
+          background: var(--khaki);
+          border-bottom: 1px solid var(--line);
+          padding: 20px 6%;
+          gap: 16px;
+        }
+        .nav-links.open {
+          display: flex;
+        }
+        .project-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="logo">Akshay <span>Bucha</span></a>
+      <button class="menu-btn" id="menuBtn">&#9776;</button>
+      <ul class="Nav-Links" id="NavLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="resume.html">Resume</a></li>
+      </ul>
+    </nav>
+    <div class="page-title">
+      <p>Projects</p>
+      <h1>Things I've <em>built.</em></h1>
+    </div>
+    <div class="content">
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="python">Python</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="database">Database</button>
+        <button class="filter-btn" data-filter="php">PHP</button>
+      </div>
+      <div class="project-grid" id="projectGrid">
+        <div class="project-card" data-category="python">
+          <div class="card-bar bar-olive"></div>
+          <p class="card-cat">Python</p>
+          <h3>Library Management System</h3>
+          <p>
+            Command-line app to manage books, members, and borrowing records.
+            Uses file handling and OOP principles.
+          </p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">File I/O</span>
+            <span class="tag">OOP</span>
+          </div>
+          <div class="card-btns">
+            <a href="#" class="btn btn-fill">View Details</a>
+            <a
+              href="https://github.com/AKBUCHA1234"
+              target="_blank"
+              class="btn btn-ghost"
+              >GitHub →</a
+            >
+          </div>
+        </div>
+        <div class="project-card" data-category="database">
+          <div class="card-bar bar-gold"></div>
+          <p class="card-cat">Database</p>
+          <h3>Student Database Manager</h3>
+          <p>
+            SQL-based student records system. Schema design, joins, views, and
+            aggregate queries in MySQL.
+          </p>
+          <div class="tags">
+            <span class="tag">SQL</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Schema Design</span>
+          </div>
+          <div class="card-btns">
+            <a href="#" class="btn btn-fill">View Details</a>
+            <a
+              href="https://github.com/AKBUCHA1234"
+              target="_blank"
+              class="btn btn-ghost"
+              >GitHub →</a
+            >
+          </div>
+        </div>
+        <div class="project-card" data-category="web">
+          <div class="card-bar bar-teal"></div>
+          <p class="card-cat">Web</p>
+          <h3>Personal Portfolio Website</h3>
+          <p>
+            This site — 6 pages, responsive, built with only HTML, CSS, and
+            Vanilla JavaScript. No frameworks.
+          </p>
+          <div class="tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+          <div class="card-btns">
+            <a href="index.html" class="btn btn-fill">Live Site</a>
+            <a
+              href="https://github.com/AKBUCHA1234"
+              target="_blank"
+              class="btn btn-ghost"
+              >GitHub →</a
+            >
+          </div>
+        </div>
+        <div class="project-card" data-category="php">
+          <div class="card-bar bar-brown"></div>
+          <p class="card-cat">PHP</p>
+          <h3>PHP Contact Form System</h3>
+          <p>
+            Server-side form with PHP validation and MySQL storage. Shows how
+            data flows from frontend to backend.
+          </p>
+          <div class="tags">
+            <span class="tag">PHP</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">HTML</span>
+          </div>
+          <div class="card-btns">
+            <a href="#" class="btn btn-fill">View Details</a>
+            <a
+              href="https://github.com/AKBUCHA1234"
+              target="_blank"
+              class="btn btn-ghost"
+              >GitHub →</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p>&copy; 2026 <b>Akshay Bucha</b> — SICSR Pune</p>
+      <div class="footer-links">
+        <a href="https://github.com/AKBUCHA1234" target="_blank">GitHub</a>
+        <a
+          href="https://www.linkedin.com/in/akshay-kumar-bucha-700151323?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+          target="_blank"
+          >LinkedIn</a
+        >
+        <a href="contact.html">Contact</a>
+      </div>
+    </footer>
+    <script>
+      document.getElementById("menuBtn").addEventListener("click", function () {
+        document.getElementById("navLinks").classList.toggle("open");
+      });
+      var filterBtns = document.querySelectorAll(".filter-btn");
+      var cards = document.querySelectorAll(".project-card");
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          filterBtns.forEach(function (b) {
+            b.classList.remove("active");
+          });
+          btn.classList.add("active");
+          var filter = btn.getAttribute("data-filter");
+          cards.forEach(function (card) {
+            var cat = card.getAttribute("data-category");
+            if (filter === "all" || cat === filter) {
+              card.classList.remove("hidden");
+            } else {
+              card.classList.add("hidden");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

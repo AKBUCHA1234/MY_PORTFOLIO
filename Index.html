@@ -1,0 +1,433 @@
+<html>
+  <head>
+    <title>Akshay's Personal Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --khaki: #f2ead8;
+        --khaki2: #e8dfc8;
+        --olive: #5a6e3a;
+        --ink: #2c2c1e;
+        --gray: #7a7560;
+        --line: #d4cbb4;
+        --white: #faf6ee;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: var(--khaki);
+        color: var(--ink);
+        font-family: "Inter", sans-serif;
+        font-weight: 300;
+        line-height: 1;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: var(--khaki);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 5%;
+        z-index: 99;
+      }
+      .logo {
+        font-family: "Lora", serif;
+        font-size: 19px;
+        color: var(--ink);
+      }
+      .logo span {
+        color: var(--olive);
+        font-style: italic;
+      }
+      .Nav-Links {
+        display: flex;
+        gap: 32px;
+        list-style: none;
+      }
+      .Nav-Links a {
+        font-size: 12.8px;
+        letter-spacing: 1px;
+        color: var(--gray);
+        text-transform: uppercase;
+      }
+      .Nav-Links a:hover,
+      .Nav-Links a.active {
+        color: var(--olive);
+      }
+      .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .hamburger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--ink);
+      }
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 6rem 5% 4rem;
+      }
+      .hero-text {
+        max-width: 620px;
+      }
+      .tag {
+        font-size: 12px;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: var(--olive);
+        margin-bottom: 1.2rem;
+      }
+      .hero h1 {
+        font-family: "Lora", serif;
+        font-size: clamp(2.8rem, 6vw, 5rem);
+        font-weight: 400;
+        line-height: 1.1;
+        margin-bottom: 1.2rem;
+      }
+      .hero h1 em {
+        color: var(--olive);
+      }
+      .hero p {
+        font-size: 1rem;
+        color: var(--gray);
+        max-width: 420px;
+        margin-bottom: 2rem;
+      }
+      .btns {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+      .btn {
+        padding: 0.65rem 1.5rem;
+        font-size: 0.8rem;
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .btn-in {
+        background: var(--olive);
+        color: var(--white);
+        border-color: var(--olive);
+      }
+      .btn.in:hover {
+        opacity: 0.85;
+      }
+      .btn-out {
+        background: transparent;
+        color: var(--ink);
+        border-color: var(--line);
+      }
+      .btn-out:hover {
+        border-color: var(--olive);
+        color: var(--olive);
+      }
+      .band {
+        background: var(--khaki2);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+      }
+      .stat {
+        flex: 1;
+        text-align: center;
+        padding: 2rem 1rem;
+        border-right: 1px solid var(--line);
+      }
+      .stat:last-child {
+        border-right: none;
+      }
+      .stat-num {
+        font-family: "Lora", serif;
+        font-size: 2.5rem;
+        display: block;
+        color: var(--olive);
+      }
+      .stat-lbl {
+        font-size: 0.72rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--gray);
+      }
+      .section {
+        padding: 4rem 5%;
+      }
+      .eyebrow {
+        font-size: 0.72rem;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: var(--olive);
+        margin-bottom: 0.5rem;
+      }
+      .section h2 {
+        font-family: "Lora", serif;
+        font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+        font-weight: 400;
+        margin-bottom: 0.8rem;
+      }
+      .section h2 em {
+        color: var(--olive);
+      }
+      .section > p,
+      .section-inner > p {
+        color: var(--gray);
+        max-width: 520px;
+        margin-bottom: 2.5rem;
+      }
+      .section-inner {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      .card {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border: 1px solid var(--line);
+        gap: 1px;
+        background: var(--line);
+        margin-bottom: 2rem;
+      }
+      .card-inner {
+        background: var(--white);
+        padding: 1.8rem 1.6rem;
+      }
+      .card-inner:hover {
+        background: var(--khaki2);
+      }
+      .card-icon {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+        display: block;
+      }
+      .card-inner h4 {
+        font-family: "Lora", serif;
+        font-size: 1.1rem;
+        margin-bottom: 0.4rem;
+      }
+      .card-inner p {
+        font-size: 0.85rem;
+        color: var(--gray);
+      }
+      .tech-strip {
+        background: var(--khaki2);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        padding: 1.6rem 5%;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      .tech-strip span.lbl {
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--gray);
+      }
+      .pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .pill {
+        font-size: 0.76rem;
+        padding: 0.25rem 0.8rem;
+        border: 1px solid var(--line);
+        color: var(--ink);
+      }
+      footer {
+        padding: 2rem 5%;
+        border-top: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      footer p {
+        font-size: 0.8rem;
+        color: var(--gray);
+      }
+      footer strong {
+        color: var(--olive);
+      }
+      .foot-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+      .foot-links a {
+        font-size: 0.78rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--gray);
+      }
+      .foot-links a:hover {
+        color: var(--olive);
+      }
+      @media (max-width: 700px) {
+        .hamburger {
+          display: flex;
+        }
+        .Nav-Links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          flex-direction: column;
+          background: var(--khaki);
+          border-bottom: 1px solid var(--line);
+          padding: 1.2rem 5%;
+          gap: 1rem;
+        }
+        .Nav-Links.open {
+          display: flex;
+        }
+
+        .band {
+          flex-direction: column;
+        }
+        .stat {
+          border-right: none;
+          border-bottom: 1px solid var(--line);
+        }
+        .stat:last-child {
+          border-bottom: none;
+        }
+
+        .card {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="nav">
+      <a href="Index.html" class="logo"
+        >Akshay<span><em>Bucha</em></span></a
+      >
+      <button class="hamburger" id="ham">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="Nav-Links" id="Navlinks">
+        <li><a href="Index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact Me</a></li>
+        <li><a href="resume.html">Resume</a></li>
+      </ul>
+    </nav>
+    <section class="hero">
+      <div class="hero-text">
+        <p class="tag">BBA IT &middot; SICSR PUNE &middot; DEVELOPER</p>
+        <h1>Akshay<br /><em>Bucha</em></h1>
+        <p>
+          Aspiring full-stack developer. Building real software with Python,
+          SQL, PHP, HTML and CSS — one project at a time
+        </p>
+        <div class="btns">
+          <a href="projects.html" class="btn btn-in">View Projects</a>
+          <a href="contact.html" class="btn btn-out">Contact Me</a>
+          <a href="resume.html" class="btn btn-out">Resume</a>
+        </div>
+      </div>
+    </section>
+    <div class="band">
+      <div class="stat">
+        <span class="stat-num">5+</span><span class="stat-lbl">Skills</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">4+</span><span class="stat-lbl">Projects</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">3rd</span><span class="stat-lbl">Year</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">1</span><span class="stat-lbl">Goal</span>
+      </div>
+    </div>
+    <section class="section">
+      <div class="section-inner">
+        <p class="eyebrow">What I bring</p>
+        <h2>Building with <em>purpose</em></h2>
+        <p>
+          From databases to front-end — I aim to grow into a developer who
+          builds complete, meaningful products.
+        </p>
+        <div class="card">
+          <div class="card-inner">
+            <span class="card-icon">&#128187;</span>
+            <h4>Web Development</h4>
+            <p>Clean websites using HTML, CSS and beginner JavaScript.</p>
+          </div>
+          <div class="card-inner">
+            <span class="card-icon">&#128202;</span>
+            <h4>Data &amp; Databases</h4>
+            <p>SQL for querying data. Python for scripting and automation.</p>
+          </div>
+          <div class="card-inner">
+            <span class="card-icon">&#128218;</span>
+            <h4>Always Learning</h4>
+            <p>Learning by building : every project teaches something new.</p>
+          </div>
+        </div>
+        <a href="about.html" class="btn-out">Learn more about me</a>
+      </div>
+    </section>
+    <div class="tech-strip">
+      <span class="lbl">My Stack</span>
+      <div class="pills">
+        <span class="pill">Python</span>
+        <span class="pill">SQL</span>
+        <span class="pill">PHP</span>
+        <span class="pill">HTML</span>
+        <span class="pill">CSS</span>
+        <span class="pill">JavaScript</span>
+        <span class="pill">Git</span>
+        <span class="pill">MySQL</span>
+      </div>
+    </div>
+    <footer>
+      <p>&copy; 2026 <strong>Akshay Bucha</strong> &mdash; SICSR Pune</p>
+      <div class="foot-links">
+        <a href="https://github.com/AKBUCHA1234" target="_blank">Github</a>
+        <a
+          href="https://www.linkedin.com/in/akshay-kumar-bucha-700151323?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+          target="_blank"
+          >LinkedIn</a
+        >
+        <a href="contact.html">Contact</a>
+      </div>
+    </footer>
+    <script>
+      document.getElementById("ham").addEventListener("click", function () {
+        document.getElementById("Navlinks").classList.toggle("open");
+      });
+    </script>
+  </body>
+</html>
